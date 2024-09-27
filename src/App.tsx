@@ -18,10 +18,14 @@ function App() {
 	}
 
 	return (
-		<main>
-			<form action='' onSubmit={handleSubmit}>
-				<label htmlFor='number'>Select Number</label>
+		<section className='section-center'>
+			<h4>Lorem Ipsum</h4>
+			<form className='lorem-form' action='' onSubmit={handleSubmit}>
+				<label className='form-label' htmlFor='number'>
+					Number of paragraphs
+				</label>
 				<input
+					className='form-input'
 					type='number'
 					name='number'
 					id='number'
@@ -31,14 +35,17 @@ function App() {
 					step={1}
 					onChange={handleChange}
 				/>
+				<button className='btn' type='submit'>
+					generate
+				</button>
 			</form>
-			<article>
+			<article className='lorem-text'>
 				{text.map(item => {
 					const id = nanoid()
 					return <p key={id}>{item}</p>
 				})}
 			</article>
-		</main>
+		</section>
 	)
 }
 
