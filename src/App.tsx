@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import data from './data'
+import { nanoid } from 'nanoid'
 
 function App() {
 	const [count, setCount] = useState<number>(1)
-	const [text, setText] = useState<string[]>(data)
+	const [text, setText] = useState<string[]>([])
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setCount(Number(e.target.value))
@@ -31,7 +32,12 @@ function App() {
 					onChange={handleChange}
 				/>
 			</form>
-			<p>{text}</p>
+			<article>
+				{text.map(item => {
+					const id = nanoid()
+					return <p key={id}>{item}</p>
+				})}
+			</article>
 		</main>
 	)
 }
